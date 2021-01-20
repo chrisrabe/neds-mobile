@@ -1,11 +1,12 @@
 import React from "react";
-import { SafeAreaView, Text } from "react-native";
+import { Text } from "native-base";
+import BaseScreen from "@neds/components/common/BaseScreen";
 
 const RacingScreen = () => {
   return (
-    <SafeAreaView>
-      <Text>Racing Screen</Text>
-    </SafeAreaView>
+    <BaseScreen>
+      <Text>This is a racing screen</Text>
+    </BaseScreen>
   );
 };
 
