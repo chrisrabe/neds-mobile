@@ -1,12 +1,15 @@
 import { StyleSheet } from "react-native";
 import { colors } from "@neds/utils/theme";
 
-const styles = StyleSheet.create({
+const globalStyles = StyleSheet.create({
   bgPrimary: {
     backgroundColor: colors.primary,
   },
   bgLightAccent: {
-    backgroundColor: colors.lightAccent
+    backgroundColor: colors.lightAccent,
+  },
+  bgDark: {
+    backgroundColor: colors.dark,
   },
   textWhite: {
     color: colors.light,
@@ -16,4 +19,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default styles;
+export default globalStyles;

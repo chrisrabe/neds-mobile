@@ -1,21 +1,20 @@
 import { StyleSheet } from "react-native";
+import { colors } from "@neds/utils/theme";
 import globalStyles from "@neds/utils/global.styles";
 import { RFValue } from "react-native-responsive-fontsize";
 
 const styles = StyleSheet.create({
   container: {
-    ...globalStyles.bgPrimary,
+    padding: RFValue(30),
+    height: RFValue(50),
+    backgroundColor: colors.light,
+    display: "flex",
+    justifyContent: "center",
+    alignContent: "center",
   },
-  headerText: {
-    ...globalStyles.textWhite,
-    fontSize: RFValue(25),
-    fontWeight: "bold",
-  },
-  subHeaderText: {
+  text: {
     ...globalStyles.textDark,
-    fontSize: RFValue(15),
-    fontWeight: "bold",
-    textTransform: "uppercase",
+    marginTop: 2,
   },
 });
 

@@ -4,18 +4,18 @@ import { RFValue } from "react-native-responsive-fontsize";
 
 const styles = StyleSheet.create({
   container: {
-    ...globalStyles.bgPrimary,
+    ...globalStyles.bgDark,
+    padding: RFValue(10),
+    flex: 1,
+    flexDirection: "row",
+    alignItems: "center"
   },
   headerText: {
     ...globalStyles.textWhite,
-    fontSize: RFValue(25),
-    fontWeight: "bold",
-  },
-  subHeaderText: {
-    ...globalStyles.textDark,
-    fontSize: RFValue(15),
+    fontSize: RFValue(12),
     fontWeight: "bold",
     textTransform: "uppercase",
+    marginLeft: RFValue(10)
   },
 });
 
