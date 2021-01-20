@@ -5,6 +5,9 @@ const styles = StyleSheet.create({
   bgPrimary: {
     backgroundColor: colors.primary,
   },
+  bgLightAccent: {
+    backgroundColor: colors.lightAccent
+  },
   textWhite: {
     color: colors.light,
   },
