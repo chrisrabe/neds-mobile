@@ -66,11 +66,45 @@ The focus here is to implement all the components.
 ### Step 8: Write docs
 - This is what I'm doing now.
 
+## Folder Structure
+
+### Inside the root folder of neds-mobile
+- src - contains all application code
+- assets - contains all static files used in the app
+- App.js - entrypoint of the app
+- package.json - contains app information like dependencies, version, author, etc
+
+(also has a bunch of stuff for linting, formatting, and babel. Not important)
+
+### Inside the src folder
+- api - contains HTTP request and mapper logic
+- components - contains all UI components used in the app
+- hook - custom hooks
+- models - data models for representing data structure
+- redux - contains code for slices, reduces and store. Mainly uses redux toolkit
+- utils - utility scripts like dayjs, global styling and themes
+
+### Inside api folder
+- index.js - contains the fetching logic
+- mapper.js - contains functions for standardising the data format received from endpoint. Allows changes to be made easily in the app if there are schema changes in the backend.
+
+### Inside components
+- common - shared components among all screens
+- images - custom SVG images written as React components
+- screens - all application screens
+
+### Component structure
+Each component is a directory. All of them contains the following:
+- components - folder for components used by that component only
+- index.js - code of the component
+- styles.js - code for defining stylesheet
+- container - folder that encapsulates redux logic
+
 ## Future Improvements
 - More pages. At the moment, I added a placeholder navigation to support more screens. If more screens to be added,
 - Remove logic for filtering out data after the fetch in the mapper. All filtering logic should be in the backend.
   Front-end should really just pass in a parameter.
-- Add automated testing through jest and react-testing-library 
+- Add automated testing through jest and react-testing-library
 
 ## App Screenshot
 
