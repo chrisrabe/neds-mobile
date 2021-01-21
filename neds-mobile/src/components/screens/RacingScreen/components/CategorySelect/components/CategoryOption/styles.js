@@ -5,7 +5,8 @@ import { RFValue } from "react-native-responsive-fontsize";
 
 const styles = StyleSheet.create({
   container: {
-    padding: RFValue(30),
+    flex: 1,
+    paddingVertical: 30,
     height: RFValue(50),
     backgroundColor: colors.light,
     display: "flex",
@@ -15,6 +16,7 @@ const styles = StyleSheet.create({
   text: {
     ...globalStyles.textDark,
     marginTop: 2,
+    textAlign: "center"
   },
 });
 

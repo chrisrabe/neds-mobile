@@ -1,10 +1,14 @@
 import React from "react";
-import { View } from "react-native";
-import CategoryOption from "@neds/components/screens/RacingScreen/components/CategorySelect/components/CategoryOption";
+import { View, Button, Text } from "native-base";
+import CategoryOption from "./components/CategoryOption";
+import styles from "./styles";
 
 const CategorySelect = () => {
   return (
-    <View style={{ display: "flex", flexDirection: "row" }}>
+    <View style={styles.container}>
+      <Button style={styles.button}>
+        <Text>All races</Text>
+      </Button>
       <CategoryOption />
       <CategoryOption />
       <CategoryOption />
