@@ -5,6 +5,7 @@ import CustomIcon from "@neds/components/common/CustomIcon";
 import styles from "./styles";
 
 const RaceDetails = ({ meetingName, raceNumber, category, startTime }) => {
+  // calculate start time
   return (
     <ListItem>
       <Left style={styles.leftContainer}>
@@ -14,7 +15,7 @@ const RaceDetails = ({ meetingName, raceNumber, category, startTime }) => {
         >{`${meetingName} - R${raceNumber}`}</Text>
       </Left>
       <Right>
-        <Text style={styles.timeText}>{startTime}</Text>
+        <Text style={styles.timeText}>3m 58s</Text>
       </Right>
     </ListItem>
   );
@@ -24,7 +25,7 @@ RaceDetails.propTypes = {
   meetingName: PropTypes.string.isRequired,
   raceNumber: PropTypes.number.isRequired,
   category: PropTypes.string,
-  startTime: PropTypes.string, // TODO will be a number
+  startTime: PropTypes.object, // dayjs object
 };
 
 export default RaceDetails;

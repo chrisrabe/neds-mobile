@@ -2,11 +2,10 @@ import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import BaseScreen from "@neds/components/common/BaseScreen";
 import CategorySelect from "./components/CategorySelect";
-import RaceList from "./components/RaceList";
+import RaceList from "./components/RaceList/container";
 import { getNextRaces } from "@neds/api";
-import RaceDetails from "@neds/models/RaceDetails";
 
-const RacingScreen = ({ races, setRaces }) => {
+const RacingScreen = ({ setRaces }) => {
   useEffect(() => {
     (async () => {
       const races = await getNextRaces();
@@ -25,7 +24,6 @@ const RacingScreen = ({ races, setRaces }) => {
 };
 
 RacingScreen.propTypes = {
-  races: PropTypes.arrayOf(RaceDetails).isRequired,
   setRaces: PropTypes.func.isRequired,
 };
 

@@ -16,11 +16,13 @@ export const getStandardisedRaceData = (serverData) => {
         // standardise schema
         .map((id) => {
           const value = summaries[id];
+          const raceId = value["race_id"];
           const startTime = value["advertised_start"].seconds;
           const meetingName = value["meeting_name"];
           const raceNumber = value["race_number"];
           const category = categories[value["category_id"]];
           return {
+            id: raceId,
             startTime,
             meetingName,
             raceNumber,
