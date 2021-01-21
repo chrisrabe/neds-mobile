@@ -9,7 +9,7 @@ const CategorySelect = () => {
       <Button style={styles.button}>
         <Text>All races</Text>
       </Button>
-      <CategoryOption icon="grayhound" label="Grayhound" />
+      <CategoryOption icon="greyhound" label="Greyhound" />
       <CategoryOption icon="horse" label="Horse" />
       <CategoryOption icon="harness" label="Harness" />
     </View>
