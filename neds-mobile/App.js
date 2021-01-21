@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { StatusBar } from "expo-status-bar";
 import * as Font from "expo-font";
 import AppProvider from "@neds/components/common/AppProvider";
-import RacingScreen from "@neds/components/screens/RacingScreen";
+import RacingScreen from "@neds/components/screens/RacingScreen/container";
 import { Ionicons } from "@expo/vector-icons";
 import LoadScreen from "@neds/components/screens/LoadScreen";
 
