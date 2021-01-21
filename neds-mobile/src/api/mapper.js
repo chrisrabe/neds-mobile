@@ -40,6 +40,8 @@ export const getStandardisedRaceData = (serverData) => {
           ...item,
           startTime: dayjs.unix(item.startTime),
         }))
+        // remove items which are past 1 minute ago
+        .filter((item) => item.startTime.diff(dayjs(), "minute") >= -1)
     );
   }
   return [];
