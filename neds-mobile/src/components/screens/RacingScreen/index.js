@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import BaseScreen from "@neds/components/common/BaseScreen";
-import CategorySelect from "./components/CategorySelect";
+import CategorySelect from "./components/CategorySelect/container";
 import RaceList from "./components/RaceList/container";
 import { getNextRaces } from "@neds/api";
 
