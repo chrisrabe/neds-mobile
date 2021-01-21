@@ -3,17 +3,23 @@ import PropTypes from "prop-types";
 import BaseScreen from "@neds/components/common/BaseScreen";
 import CategorySelect from "./components/CategorySelect/container";
 import RaceList from "./components/RaceList/container";
-import { getNextRaces } from "@neds/api";
+import useInterval from "@neds/hook/useInterval";
+import RaceDetailsModel from "@neds/models/RaceDetails";
+import dayjs from "dayjs";
 
-const RacingScreen = ({ setRaces }) => {
+const RacingScreen = ({ races, fetchRaces }) => {
   useEffect(() => {
-    (async () => {
-      const races = await getNextRaces();
-      setRaces(races);
-    })();
-  }, [setRaces]);
+    fetchRaces();
+  }, [fetchRaces]);
 
-  // TODO add a timer here to retrieve races
+  useInterval(() => {
+    // update data if earliest race happened a minute ago
+    const first = races[0];
+    const secsDiff = first.startTime.diff(dayjs(), "seconds");
+    if (secsDiff < -60) {
+      fetchRaces();
+    }
+  }, 1000);
 
   return (
     <BaseScreen headingText="Next to go">
@@ -24,7 +30,8 @@ const RacingScreen = ({ setRaces }) => {
 };
 
 RacingScreen.propTypes = {
-  setRaces: PropTypes.func.isRequired,
+  races: PropTypes.arrayOf(RaceDetailsModel).isRequired,
+  fetchRaces: PropTypes.func.isRequired,
 };
 
 export default RacingScreen;
