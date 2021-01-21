@@ -1,9 +1,9 @@
 import { connect } from "react-redux";
-import { setRaces } from "@neds/redux/slices/racing.slice";
+import { fetchRaces } from "@neds/redux/slices/racing.slice";
 import RacingScreen from "../index";
 
-const mapStateToProps = () => ({});
+const mapStateToProps = (state) => ({ races: state.racing.races });
 
-const mapDispatch = { setRaces };
+const mapDispatch = { fetchRaces };
 
 export default connect(mapStateToProps, mapDispatch)(RacingScreen);
