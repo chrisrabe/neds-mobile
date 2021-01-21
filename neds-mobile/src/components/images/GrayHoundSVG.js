@@ -21,6 +21,7 @@ GrayHoundSVG.propTypes = {
 
 GrayHoundSVG.defaultProps = {
   color: colors.dark,
+  height: 50
 };
 
 export default GrayHoundSVG;

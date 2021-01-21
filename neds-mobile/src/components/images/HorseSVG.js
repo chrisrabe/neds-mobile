@@ -15,12 +15,13 @@ const HorseSVG = ({ width, height, color }) => {
 
 HorseSVG.propTypes = {
   width: PropTypes.number,
-  height: PropTypes.height,
+  height: PropTypes.number,
   color: PropTypes.string,
 };
 
 HorseSVG.defaultProps = {
   color: colors.dark,
+  height: 50,
 };
 
 export default HorseSVG;

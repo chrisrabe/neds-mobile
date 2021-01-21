@@ -9,9 +9,9 @@ const CategorySelect = () => {
       <Button style={styles.button}>
         <Text>All races</Text>
       </Button>
-      <CategoryOption />
-      <CategoryOption />
-      <CategoryOption />
+      <CategoryOption icon="grayhound" label="Grayhound" />
+      <CategoryOption icon="horse" label="Horse" />
+      <CategoryOption icon="harness" label="Harness" />
     </View>
   );
 };

@@ -28,6 +28,7 @@ HarnessSVG.propTypes = {
 
 HarnessSVG.defaultProps = {
   color: colors.dark,
+  height: 50,
 };
 
 export default HarnessSVG;
