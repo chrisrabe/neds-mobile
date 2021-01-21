@@ -1,11 +1,23 @@
-import React from "react";
+import React, { useCallback } from "react";
 import PropTypes from "prop-types";
 import { View, Button, Text } from "native-base";
 import CategoryOption from "./components/CategoryOption";
 import styles from "./styles";
 
 const CategorySelect = ({ selectedCategory, setSelectedCategory }) => {
-  // In future, can make defining category options more generic.
+  const toggleCategory = useCallback(
+    (category) => {
+      return () => {
+        if (selectedCategory === category) {
+          setSelectedCategory(undefined);
+        } else {
+          setSelectedCategory(category);
+        }
+      };
+    },
+    [selectedCategory, setSelectedCategory],
+  );
+
   return (
     <View style={styles.container}>
       <Button
@@ -18,19 +30,19 @@ const CategorySelect = ({ selectedCategory, setSelectedCategory }) => {
         icon="greyhound"
         label="Greyhound"
         isSelected={selectedCategory === "greyhound"}
-        onPress={() => setSelectedCategory("greyhound")}
+        onPress={toggleCategory("greyhound")}
       />
       <CategoryOption
         icon="horse"
         label="Horse"
         isSelected={selectedCategory === "horse"}
-        onPress={() => setSelectedCategory("horse")}
+        onPress={toggleCategory("horse")}
       />
       <CategoryOption
         icon="harness"
         label="Harness"
         isSelected={selectedCategory === "harness"}
-        onPress={() => setSelectedCategory("harness")}
+        onPress={toggleCategory("harness")}
       />
     </View>
   );
