@@ -1,10 +1,48 @@
-import React from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import PropTypes from "prop-types";
 import { ListItem, Text, Left, Right } from "native-base";
 import CustomIcon from "@neds/components/common/CustomIcon";
 import styles from "./styles";
+import dayjs from "dayjs";
+import useInterval from "@neds/hook/useInterval";
 
 const RaceDetails = ({ meetingName, raceNumber, category, startTime }) => {
+  const [displayTime, setDisplayTime] = useState("?");
+
+  const updateDisplayTime = useCallback(() => {
+    // get minute difference between now and start time
+    const minuteDiff = startTime.diff(dayjs(), "minutes");
+    if (minuteDiff > 60) {
+      // show hours, minutes
+      const hours = Math.floor(minuteDiff / 60);
+      const minutes = minuteDiff - hours * 60;
+      const timeStr = `${hours}h ${minutes}m`;
+      setDisplayTime(timeStr);
+    } else {
+      // show minutes, seconds
+      const secsDiff = startTime.diff(dayjs(), "seconds");
+      const absDiff = Math.abs(secsDiff);
+      const minutes = Math.floor(absDiff / 60);
+      const seconds = absDiff - minutes * 60;
+      const timeStr = `${minutes}m ${seconds}s`;
+      setDisplayTime(secsDiff > 0 ? timeStr : `-${timeStr}`);
+    }
+  }, [setDisplayTime, startTime]);
+
+  useEffect(() => {
+    if (startTime) {
+      updateDisplayTime();
+    }
+  }, [updateDisplayTime]);
+
+  // every second, display time is updated
+  useInterval(() => {
+    if (startTime) {
+      updateDisplayTime();
+    }
+  }, 1000);
+
+  // calculate start time
   return (
     <ListItem>
       <Left style={styles.leftContainer}>
@@ -14,7 +52,7 @@ const RaceDetails = ({ meetingName, raceNumber, category, startTime }) => {
         >{`${meetingName} - R${raceNumber}`}</Text>
       </Left>
       <Right>
-        <Text style={styles.timeText}>{startTime}</Text>
+        <Text style={styles.timeText}>{displayTime}</Text>
       </Right>
     </ListItem>
   );
@@ -24,7 +62,7 @@ RaceDetails.propTypes = {
   meetingName: PropTypes.string.isRequired,
   raceNumber: PropTypes.number.isRequired,
   category: PropTypes.string,
-  startTime: PropTypes.string, // TODO will be a number
+  startTime: PropTypes.object, // dayjs object
 };
 
 export default RaceDetails;
