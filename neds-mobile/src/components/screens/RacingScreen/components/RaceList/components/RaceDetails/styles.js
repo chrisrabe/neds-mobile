@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
     fontSize: RFValue(15),
   },
   timeText: {
-    fontSize: RFValue(18),
+    fontSize: RFValue(16),
     fontWeight: "bold",
   },
 });
