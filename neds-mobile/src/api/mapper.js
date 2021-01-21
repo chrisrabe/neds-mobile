@@ -1,4 +1,4 @@
-import dayjs from "dayjs";
+import dayjs from "@neds/utils/dayjs";
 
 // Functions for standardising FE data values to easily accommodate schema changes in BE
 
@@ -16,7 +16,7 @@ export const getStandardisedRaceData = (serverData) => {
         // standardise schema
         .map((id) => {
           const value = summaries[id];
-          const startTime = dayjs.unix(value["advertised_start"].seconds);
+          const startTime = value["advertised_start"].seconds;
           const meetingName = value["meeting_name"];
           const raceNumber = value["race_number"];
           const category = categories[value["category_id"]];
@@ -27,12 +27,17 @@ export const getStandardisedRaceData = (serverData) => {
             category: category || "unknown",
           };
         })
-        // filter out unknown values
+        // filter out unknown categories
         .filter((item) => item.category !== "unknown")
         // sort to ascending
         .sort((a, b) => {
           return a.startTime - b.startTime;
         })
+        // convert date time to dayjs object
+        .map((item) => ({
+          ...item,
+          startTime: dayjs.unix(item.startTime),
+        }))
     );
   }
   return [];

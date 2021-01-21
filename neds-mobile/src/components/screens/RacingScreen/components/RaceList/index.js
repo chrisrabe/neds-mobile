@@ -22,7 +22,7 @@ const RaceList = () => {
         category="greyhound"
         meetingName="LAUNCESTON"
         raceNumber={6}
-        startTime="3m 58s"
+        startTime="2h 3m"
       />
       <RaceDetails
         category="horse"
